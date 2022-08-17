@@ -8,6 +8,8 @@ bgSound.volume = 0.1
 jumpSound.volume = 0.1
 failSound.volume = 0.1
 bgSound.play()
+console.log('idle')
+
 const jump = () => {
   jumpSound.play()
   mario.classList.add('jump')
@@ -17,7 +19,7 @@ const jump = () => {
   }, 500)
 }
 
-const loop = setInterval(() => {
+function gameOverLoop() {
 
   const cloudsPosition = clouds.offsetLeft
   const pipePosition = pipe.offsetLeft
@@ -42,13 +44,11 @@ const loop = setInterval(() => {
     mario.style.marginLeft = '40px'
     mario.style.zIndex = 1
 
-
-
-
     clearInterval(loop)
-    
+
   }
-  
-}, 10)
+}
+
+const loop = setInterval(gameOverLoop, 10)
 
 document.addEventListener('keydown', jump)
