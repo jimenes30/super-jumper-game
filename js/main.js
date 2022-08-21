@@ -7,7 +7,11 @@ const failSound = document.querySelector('.fail-sound')
 bgSound.volume = 0.1
 jumpSound.volume = 0.1
 failSound.volume = 0.1
-bgSound.play()
+
+function musicaFundo() {
+  bgSound.play()
+}
+
 console.log('idle')
 
 const jump = () => {
@@ -24,7 +28,6 @@ function gameOverLoop() {
   const cloudsPosition = clouds.offsetLeft
   const pipePosition = pipe.offsetLeft
   const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '')
-
 
   if (pipePosition <= 150 && pipePosition > 0 && marioPosition < 80) {
 
@@ -49,6 +52,9 @@ function gameOverLoop() {
   }
 }
 
-const loop = setInterval(gameOverLoop, 10)
+// const loop = setInterval(gameOverLoop, 10)
 
 document.addEventListener('keydown', jump)
+document.addEventListener('touchstart', jump)
+mario.addEventListener('click', musicaFundo)
+mario.addEventListener('touchstart', musicaFundo)
